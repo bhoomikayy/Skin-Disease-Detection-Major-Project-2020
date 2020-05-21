@@ -33,7 +33,7 @@ function predictOnLoad() {
 let model;
 (async function () {
 	
-	model = await tf.loadModel('https://nifty-babbage-7652c7.netlify.app//final_model_kaggle_version1/model.json');
+	model = await tf.loadModel('https://nifty-babbage-7652c7.netlify.app//model.json');
 	$("#selected-image").attr("src", "http://skin.test.woza.work/assets/samplepic.jpg");
 	
 	// Hide the model loading spinner
