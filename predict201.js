@@ -1,10 +1,4 @@
-// Code is based on a YouTube tutorial by deeplizard
-// https://www.youtube.com/watch?v=HEQDRWMK6yY
 
-
-
-// After the model loads we want to make a prediction on the default image.
-// Thus, the user will see predictions when the page is first loaded.
 
 function simulateClick(tabID) {
 	
@@ -25,10 +19,7 @@ $("#image-selector").change(function () {
 		reader.readAsDataURL(file);
 		
 		
-		// Simulate a click on the predict button
-		// This introduces a 0.5 second delay before the click.
-		// Without this long delay the model loads but may not automatically
-		// predict.
+		
 		setTimeout(simulateClick.bind(null,'predict-button'), 500);
 
 });
@@ -43,9 +34,9 @@ let model;
 	$("#selected-image").attr("src", "http://skin.test.woza.work/assets/samplepic.jpg")
 	
 	
-	// Simulate a click on the predict button
+	
 	predictOnLoad();
-	// Hide the model loading spinner
+	
 	$('.progress-bar').hide();
 	
 	
@@ -53,7 +44,7 @@ let model;
 
 function predictOnLoad() {
 	
-	// Simulate a click on the predict button
+	
 	setTimeout(simulateClick.bind(null,'predict-button'), 1000);
 };
 
@@ -81,17 +72,12 @@ $("#predict-button").click(async function () {
 	
 	
 	
-	// Pass the tensor to the model and call predict on it.
-	// Predict returns a tensor.
-	// data() loads the values of the output tensor and returns
-	// a promise of a typed array when the computation is complete.
-	// Notice the await and async keywords are used together.
 	let predictions = await model.predict(tensor).data();
 	let top5 = Array.from(predictions)
 		.map(function (p, i) { // this is Array.map
 			return {
 				probability: p,
-				className: SKIN_CLASSES[i] // we are selecting the value from the obj
+				className: SKIN_CLASSES[i] 
 			};
 				
 			
